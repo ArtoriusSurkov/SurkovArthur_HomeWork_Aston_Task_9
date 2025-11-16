@@ -27,7 +27,7 @@ public class UserService {
 
     public Optional<UserEntity> getByEmail(String email) {
         try {
-            if (email == null) {
+            if (email == null || email.isEmpty()) {
                 throw new IllegalArgumentException("Email не может быть null");
             }
             return userRepository.findByEmail(email);
@@ -47,7 +47,7 @@ public class UserService {
     @Transactional
     public void deleteByEmail(String email) {
         try {
-            if (email == null) {
+            if (email == null || email.isEmpty()) {
                 throw new IllegalArgumentException("Email не может быть null");
             }
             userRepository.deleteByEmail(email);
@@ -58,7 +58,7 @@ public class UserService {
 
     public Optional<UserEntity> updateUserByEmail(String email, UserEntity newData) {
         try {
-            if (email == null) {
+            if (email == null || email.isEmpty()) {
                 throw new IllegalArgumentException("Email не может быть null");
             }
             if (newData == null) {
